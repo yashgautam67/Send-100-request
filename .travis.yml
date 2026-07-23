@@ -2,10 +2,10 @@ language: bash
 
 script:
   - |
-    for i in $(seq 1 100000)
+    for i in $(seq 1 10000)
     do
-      echo "Request #$i"
-      curl -s "https://6a076780000d2ae078f2.sfo.appwrite.run/?prompt=Hello+$i"
-      echo ""
-      echo "--------------------------------"
+      curl -s -o /dev/null "https://6a076780000d2ae078f2.sfo.appwrite.run/?prompt=Hello+$i"
+      if (( i % 10 == 0 )); then
+        echo "Completed $i requests"
+      fi
     done
